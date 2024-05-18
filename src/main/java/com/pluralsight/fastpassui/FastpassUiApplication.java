@@ -1,7 +1,10 @@
 package com.pluralsight.fastpassui;
 
+import java.util.function.Supplier;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class FastpassUiApplication {
@@ -10,5 +13,9 @@ public class FastpassUiApplication {
 		SpringApplication.run(FastpassUiApplication.class, args);
 	}
 
+	@Bean
+	public Supplier<FastPassToll> generateTollCharge(){
+		return () -> new FastPassToll("800", "1001", 1.05f);
+	}
 
 }
